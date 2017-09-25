@@ -19,8 +19,12 @@ module.exports = router;
 const router = express.Router();
 ...
 router.route('/')
-.get( res.render('index', { title: 'Express' });)
-.post(res.render('login');)
+  .get((req, res, next) =>{
+      res.render('index', { title: 'Express' });
+  })
+  .post((req, res, next) =>{
+      res.render('index', { title: 'Express' });
+  })
 ...
 module.exports = router;
 ```
