@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+    #formFill{
+      margin: 50px auto;
+      width: 800px;
+    }
+  </style>
+</head>
+<body>
+    <h1>This is newnote page</h1>
+  {% if message.length > 0%}
+<div class="alert alert-danger">
+      {{message}}
+    </div>
+{% endif%}
+    <form id="formFill" method="POST">
+      <label for="memberName">MemberName</label> </br>
+      <input type="text" name="memberName" id="memberName" required> <br></br>
+      <label for="project">Project</label> </br>
+      <input type="text" name="project" id="project"> <br></br>
+      <label for="workYesterday">WorkYesterday</label> </br>
+      <input type="text" name="workYesterday" id="workYesterday" required> <br></br>
+      <label for="workToday">WorkToday</label> </br>
+      <input type="text" name="workToday"  id="workToday" required>  <br></br>
+      <label for="impediment">Impediment</label> </br>
+      <input type="text" name="impediment" id="impediment"> <br></br>
+      <input type="submit" name="submit" >
+    </form>
+</body>
+</html>
