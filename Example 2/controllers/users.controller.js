@@ -6,11 +6,13 @@ module.exports = {
     try {
       const users = await User.find({})
       res.status(200).json(users)
+      // const cars = await Car.find({_id: "59e96c1801ab7b2b50824fd0"}).populate('user')
+      // res.status(200).json(cars.title)
     }
     catch (err) {
       next(err)
     }
-  },
+  },  
   newUser: async (req, res, next) => {
     try {
       const newUser = new User(req.body)
@@ -54,30 +56,22 @@ module.exports = {
   },
   getUserCars: async(req,res, next) => {
     const {userId} = req.params
+    console.log('userId', userId)
     const user = await User.findById(userId)
-
+    console.log('user', user)
   },
   newUserCar: async (req,res,next) => {
-    const { userId } = req.params 
+    const {userId} = req.params
+    const newCar = req.body
+    newCar.user = userId
+    console.log('newCar', newCar);
+
+    let carsave = await new Car(newCar)
+    await carsave.save();
+
     // Create a new car
-    const newCar = new Car(req.body)
-    // Get user that we want that car append to
-    const user = await User.findById(userId)
-    // Assign user as a car's seller
-    newCar.seller = user
-    // Save the car
-    await newCar.save()
-    // add car to the users's selling array
-    user.cars.push(newCar)
-    // Save the user
-    await user.save();
+    // let result = await Car.find()
+    // console.log('result', result)
     res.status(200).json(newCar)
   }
 }
-
-/*
-We can interact with mongoose in 3 different ways:
-1) Callbacks
-2) Promise
-3) Async/Await
-*/

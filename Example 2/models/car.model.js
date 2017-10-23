@@ -5,9 +5,9 @@ const carSchema = new Schema({
   make: String,
   model: String,
   year: Number,
-  seller: {
+  users: [{
     type: Schema.Types.ObjectId,
-    ref:"user"
-  }
+    ref: 'user'
+  }]
 })
 module.exports = mongoose.model('car', carSchema)

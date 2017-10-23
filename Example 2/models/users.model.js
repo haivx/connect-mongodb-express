@@ -4,10 +4,6 @@ const Schema = mongoose.Schema
 const userSchema = new Schema({
   firstName: String,
   lastName: String,
-  email: String,
-  cars: [{
-    type: Schema.Types.ObjectId,
-    ref: 'car'
-  }]
+  email: String
 })
 module.exports = mongoose.model('user', userSchema)
